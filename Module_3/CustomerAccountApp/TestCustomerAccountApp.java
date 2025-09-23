@@ -64,8 +64,8 @@ public class TestCustomerAccountApp {
         // Display customer info and balance
         System.out.println("\nCustomer Details:");
         System.out.println(customer.toString());
-        System.out.println("Balance as of "+account.getTransactionDate());
-        System.out.printf("is $%,6.2f%n",account.getBalance());
+        System.out.print("Balance as of "+account.getTransactionDate());
+        System.out.printf(" is $%,6.2f%n",account.getBalance());
 
         sc.close();
     }
