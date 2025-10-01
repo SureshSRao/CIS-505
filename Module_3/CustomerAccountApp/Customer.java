@@ -76,10 +76,10 @@ public class Customer {
      */
     @Override
     public String toString() {
-        return "Name: " + name + "\n"
-             + "Address: " + address + "\n"
-             + "City: " + city + "\n"
-             + "Zip: " + zip;
+        return "  Name: " + name + "\n"
+             + "  Address: " + address + "\n"
+             + "  City: " + city + "\n"
+             + "  Zip: " + zip;
     }
 }
 
