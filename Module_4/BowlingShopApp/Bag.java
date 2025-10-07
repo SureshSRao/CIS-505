@@ -33,7 +33,7 @@ public class Bag extends Product {
      */
     @Override
     public String toString() {
-        return super.toString() + "\nType: " + type;
+        return super.toString() + "\n  Type: " + type;
     }
 }
 

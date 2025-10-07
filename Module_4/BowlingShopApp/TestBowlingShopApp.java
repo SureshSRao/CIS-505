@@ -18,11 +18,11 @@ public class TestBowlingShopApp {
      */
     public static void displayMenu() {
         System.out.println();
-        System.out.println("MENU OPTIONS");
-        System.out.println("  1. <b> Bowling Balls");
-        System.out.println("  2. <a> Bowling Bags");
-        System.out.println("  3. <s> Bowling Shoes");
-        System.out.println("  4. <x> To Exit");
+        System.out.println("  MENU OPTIONS");
+        System.out.println("    1. <b> Bowling Balls");
+        System.out.println("    2. <a> Bowling Bags");
+        System.out.println("    3. <s> Bowling Shoes");
+        System.out.println("    4. <x> To Exit");
         System.out.println();
     }
 
@@ -34,17 +34,17 @@ public class TestBowlingShopApp {
         Scanner sc = new Scanner(System.in);
         String choice;
 
-        System.out.println("Welcome to the Bowling Shop");
+        System.out.println("  Welcome to the Bowling Shop");
 
         do {
             displayMenu();
-            System.out.print("Please choose an option: ");
+            System.out.print("  Please choose an option: ");
             choice = sc.nextLine();
 
             GenericQueue<Product> products = ProductDB.getProducts(choice);
             if(products.size() > 0){
                 System.out.println();
-                System.out.print("--Product Listing--");
+                System.out.print("  --Product Listing--");
             }
             while (products.size() > 0) {
                 Product p = products.dequeue();
@@ -54,7 +54,7 @@ public class TestBowlingShopApp {
 
         } while (!choice.equalsIgnoreCase("x"));
 
-        System.out.println("Exiting the program...");
+        System.out.println("  Exiting the program...");
         sc.close();
     }
 }

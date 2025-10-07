@@ -33,7 +33,7 @@ public class Shoe extends Product {
      */
     @Override
     public String toString() {
-        return super.toString() + "\nSize: " + size;
+        return super.toString() + "\n  Size: " + size;
     }
 }
 

@@ -33,7 +33,7 @@ public class Ball extends Product {
      */
     @Override
     public String toString() {
-        return super.toString() + "\nColor: " + color;
+        return super.toString() + "\n  Color: " + color;
     }
 }
 
