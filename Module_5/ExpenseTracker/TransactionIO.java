@@ -17,10 +17,12 @@ import java.util.Scanner;
  */
 public class TransactionIO {
   /** File name constant. */
-  private static final String FILE_NAME = "Module_5//ExpenseTracker//expenses.txt";
+  private static final String FILE_NAME = "expenses.txt";
+
+  private static final String FILE_PATH = "Module_5//ExpenseTracker//"+FILE_NAME;
 
   /** Backing file instance. */
-  private static final File file = new File(FILE_NAME);
+  private static final File file = new File(FILE_PATH);
 
   /**
    * Writes a list of transactions to the expenses file (appending if it exists).
@@ -36,7 +38,7 @@ public class TransactionIO {
         // append mode to preserve prior data
         output = new PrintWriter(new PrintStream(new FileOutputStream(file, true)));
       } else {
-        output = new PrintWriter(FILE_NAME);
+        output = new PrintWriter(FILE_PATH);
       }
       for (Transaction t : transactions) {
         output.print(t.getDate()); output.print("|");
