@@ -51,11 +51,11 @@ import javafx.stage.Stage;
  *
  * <p>Behavior:
  * <ul>
- *   <li>Not Implemented yet</li>
+ *   <li>Calculates the rate</li>
  *   
  * </ul>
  *
- * <p>All UI labels, spacing, and alignment follow the Assignment 7.2 layout constraints.
+ * <p>All UI labels, spacing, and alignment follow the Assignment 8.2 layout constraints.
  */
 public class SripathiRaoEnhancedFutureValueApp extends Application {
 
