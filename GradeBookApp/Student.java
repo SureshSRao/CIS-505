@@ -1,10 +1,10 @@
 package GradeBookApp;
 
 /**
- * Assignment 10.2
+ * Assignment 10.2 / 11.2
  * 
  * @author Suresh Sripathi Rao
- * @version 1.0
+ * @version 2.0
  * Represents a single grade book entry.
  * Holds student first name, last name, course, and letter grade (A-F).
  */

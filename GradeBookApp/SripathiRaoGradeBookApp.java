@@ -17,10 +17,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Assignment 10.2
+ * Assignment 10.2 / 11.2
  * 
  * @author Suresh Sripathi Rao
- * @version 1.0
+ * @version 2.0
  * Grade Book - UI Only (Module: Capstone Project UI)
  * <p>
  * This JavaFX application builds the user interface specified in the assignment:
@@ -114,17 +114,76 @@ public class SripathiRaoGradeBookApp extends Application {
     );
     root.setPadding(new Insets(14, 14, 14, 14));
 
-    // NOTE: Event handling is intentionally not implemented in this module.
-    // You will:
-    // - On "Save Entry": validate inputs, construct Student, append to grades.csv (with header when new),
-    //   and show Student.toString() in Results.
-    // - On "View Grades": read grades.csv and display contents in Results.
-    // - On "Clear Form": clear all inputs and Results.
-    // Those steps are specified for next module—this submission is UI-only per instructions.
+    // --- EVENT HANDLERS ---
+
+    // Save Entry: validate, append to CSV, show confirmation
+    btnSaveEntry.setOnAction(e -> handleSaveEntry());
+
+    // View Grades: read CSV and show contents
+    btnViewGrades.setOnAction(e -> handleViewGrades());
+
+    // Clear Form: reset inputs and results
+    btnClearForm.setOnAction(e -> handleClearForm());
 
     stage.setTitle("SripathiRaoGradeBookApp");
     stage.setScene(new Scene(root, 520, 480));
     stage.show();
+  }
+
+  /**
+   * Handles the Save Entry button click.
+   * Validates inputs, appends a Student entry to grades.csv, and shows feedback.
+   */
+  private void handleSaveEntry() {
+    txtResults.clear();
+
+    String firstName = txtFirstName.getText().trim();
+    String lastName  = txtLastName.getText().trim();
+    String course    = txtCourse.getText().trim();
+    String grade     = cboGrade.getValue();
+
+    // Basic validation
+    if (firstName.isEmpty() || lastName.isEmpty() || course.isEmpty()) {
+      txtResults.setText("Please fill in First Name, Last Name, and Course before saving.");
+      return;
+    }
+
+    Student s = new Student(firstName, lastName, course, grade);
+
+    try {
+      GradeBookIO.appendStudent(s);
+      txtResults.setText("Entry saved to " + GradeBookIO.FILE_NAME + ":\n\n" + s.toString());
+      // Optionally clear the fields after save (comment out if not desired)
+      // handleClearForm();
+    } catch (Exception ex) {
+      txtResults.setText("Error saving entry: " + ex.getMessage());
+    }
+  }
+
+  /**
+   * Handles the View Grades button click.
+   * Reads all entries from grades.csv and displays them in the Results area.
+   */
+  private void handleViewGrades() {
+    txtResults.clear();
+    try {
+      String contents = GradeBookIO.readAllGrades();
+      txtResults.setText(contents);
+    } catch (Exception ex) {
+      txtResults.setText("Error reading grades: " + ex.getMessage());
+    }
+  }
+
+  /**
+   * Handles the Clear Form button click.
+   * Clears all input controls and the Results text area.
+   */
+  private void handleClearForm() {
+    txtFirstName.clear();
+    txtLastName.clear();
+    txtCourse.clear();
+    cboGrade.getSelectionModel().selectFirst();
+    txtResults.clear();
   }
 
   public static void main(String[] args) {
